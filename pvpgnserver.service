@@ -1,0 +1,13 @@
+[Unit]
+Description=Bnetd Server
+Require=docker.service
+After=docker.service
+
+[Service]
+User=root
+Restart=always
+ExecStart=/usr/local/bin/docker-compose -f /home/daniel/docker/bnetd/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose -f /home/daniel/docker/bnetd/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target
