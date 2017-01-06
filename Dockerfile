@@ -4,7 +4,6 @@ MAINTAINER danfercf@gmail.com
 RUN apt-get update && apt-get install -y build-essential libboost-all-dev libbz2-dev libmysqlclient-dev libgmp3-dev liblua5.1-0-dev git cmake
 RUN mkdir -p /usr/src/pvpgn
 WORKDIR /usr/src/
-#RUN git clone https://github.com/danfercf1/pvpgn-server.git pvpgn
 ADD pvpgn/. /usr/src/pvpgn/
 WORKDIR /usr/src/pvpgn/ 
 RUN cmake -D CMAKE_INSTALL_PREFIX=/usr/local/pvpgn -D WITH_MYSQL=true -D WITH_LUA=true ./ && make && make install
