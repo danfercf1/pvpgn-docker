@@ -14,3 +14,11 @@ services:
       - "6112:6112"
     links:
       - db
+  ghost:
+    image: "quay.io/danfercf/ghostbot:0.1"
+    ports:
+      - "6116:6116"
+    volumes: 
+      - "/usr/local/ghost/maps:/usr/local/ghost/maps"
+    links:
+      - bnetd
