@@ -11,4 +11,7 @@ WORKDIR /
 ADD files/. usr/local/pvpgn/var/files/
 COPY bnetd.conf usr/local/pvpgn/etc/
 COPY channel.conf usr/local/pvpgn/etc/
+#COPY wait-for-mysql.sh /
+#RUN chmod +x /wait-for-mysql.sh
+#RUN apt install -y mysql-client
 CMD /usr/local/pvpgn/sbin/bnetd && tail -f /dev/null

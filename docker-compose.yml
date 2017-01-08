@@ -1,24 +1,14 @@
 version: '2'
 services:
-  db:
-    image: "hypriot/rpi-mysql:latest"
-    ports:
-     - "3306:3306"
-    volumes:
-     - "/var/mysql/data:/var/lib/mysql"
-    environment:
-     - "MYSQL_ROOT_PASSWORD: mysql"
   bnetd:
     image: "quay.io/danfercf/ubuntu-16.10:0.1"
-    ports:
-      - "6112:6112"
-    links:
-      - db
+    network_mode: "host"
+    container_name: bnetd
   ghost:
     image: "quay.io/danfercf/ghostbot:0.1"
-    ports:
-      - "6116:6116"
     volumes: 
       - "/usr/local/ghost/maps:/usr/local/ghost/maps"
-    links:
-      - bnetd
+    network_mode: "host"
+    depends_on:
+       - "bnetd"
+    container_name: ghost
