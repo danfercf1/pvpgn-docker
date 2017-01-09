@@ -1,13 +1,18 @@
 version: '2'
 services:
   bnetd:
-    image: "quay.io/danfercf/ubuntu-16.10:0.1"
+    image: "quay.io/danfercf/bnetd:0.1"
+    volumes:
+      - "/usr/local/pvpgn/etc:/usr/local/pvpgn/etc"
+      - "/usr/local/pvpgn/log:/var/log/pvpgn"
+      - "/usr/local/ghost/maps:/usr/local/pvpgn/maps"
     network_mode: "host"
     container_name: bnetd
   ghost:
-    image: "quay.io/danfercf/ghostbot:0.1"
+    image: "quay.io/danfercf/ghostbot:0.2"
     volumes: 
       - "/usr/local/ghost/maps:/usr/local/ghost/maps"
+      - "/usr/local/ghost/replays:/usr/local/ghost/replays"
     network_mode: "host"
     depends_on:
        - "bnetd"
