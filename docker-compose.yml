@@ -9,7 +9,7 @@ services:
     network_mode: "host"
     container_name: bnetd
   ghost:
-    image: "quay.io/danfercf/ghostbot:0.2"
+    image: "quay.io/danfercf/ghostbot:0.3"
     volumes: 
       - "/usr/local/ghost/maps:/usr/local/ghost/maps"
       - "/usr/local/ghost/replays:/usr/local/ghost/replays"
