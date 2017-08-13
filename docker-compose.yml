@@ -8,12 +8,3 @@ services:
       - "/usr/local/ghost/maps:/usr/local/pvpgn/maps"
     network_mode: "host"
     container_name: bnetd
-  ghost:
-    image: "quay.io/danfercf/ghostbot:0.3"
-    volumes: 
-      - "/usr/local/ghost/maps:/usr/local/ghost/maps"
-      - "/usr/local/ghost/replays:/usr/local/ghost/replays"
-    network_mode: "host"
-    depends_on:
-       - "bnetd"
-    container_name: ghost
